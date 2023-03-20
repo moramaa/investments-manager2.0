@@ -1,10 +1,9 @@
 "use client"
 
 import { ModalForm } from '@ant-design/pro-components';
-import { ProFormInstance, ProFormText, ProFormMoney, ProFormSwitch, ProFormDigit, ProFormFieldSet, ProFormDependency, ProForm, ProFormSelect } from '@ant-design/pro-form';
+import { ProFormInstance, ProFormText, ProFormMoney, ProFormDigit, ProFormDependency, ProForm } from '@ant-design/pro-form';
 import { Button, message } from 'antd/lib';
 import React, { useRef, useState } from 'react'
-import InvestForm from './InvestForm';
 
 
 

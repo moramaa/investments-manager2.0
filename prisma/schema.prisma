@@ -70,12 +70,27 @@ model Topic {
 }
 
 model Note {
-    id                String   @id
-    createdAt         DateTime @default(now())
-    updatedAt         DateTime @updatedAt
-    title             String
-    content           String
-    topicId           String
-    topic             Topic    @relation(fields: [topicId], references: [id])
-    initialInvestment Int?
+    id        String   @id
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    title     String
+    content   String
+
+    topicId   String
+    topic     Topic    @relation(fields: [topicId], references: [id])
+
+    investmentName     String  @default("investment")
+    investmentProduced String?
+    insuranceCompany   String?
+    isActive           Boolean @default(true)
+
+    initialInvestment     Int?   @default(0)
+    monthlyDeposit        Int?   @default(0)
+    yearsOfInvestment     Int?   @default(0)
+    annualInterestRate    Float? @default(0)
+    annualManagementFees  Float? @default(0)
+    monthlyManagementFees Float? @default(0)
+
+    
 }

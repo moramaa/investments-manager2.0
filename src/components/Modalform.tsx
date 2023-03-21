@@ -10,11 +10,11 @@ import React, { useRef, useState } from 'react'
 const Modalform = ({
     onSave,
   }: {
-    onSave: (note: { title: string; content: string; initialInvestment: number }) => void;
+    onSave: (note: { title: string; content: string; initialInvestment: number;monthlyDeposit: number;yearsOfInvestment: number;annualInterestRate: number;annualManagementFees: number;monthlyManagementFees: number; }) => void;
   }) => {
 
     const restFormRef = useRef<ProFormInstance>();
-    const formRef = useRef<ProFormInstance>();
+    // const formRef = useRef<ProFormInstance>();
     const [modalVisible, setModalVisible] = useState<boolean>(false);
 
     
@@ -45,7 +45,7 @@ const Modalform = ({
             <ProForm.Group  >
                 <ProFormText
                     width="sm"
-                    name="investmentID"
+                    name="investmentName"
                     label="שם ההשקעה"
                     placeholder="בחר שם להשקעה שלך "
                 />
@@ -103,6 +103,11 @@ const Modalform = ({
                     title:values.investmentID,
                     content: values.investmentProduced,
                     initialInvestment: values.initialInvestment,
+                    monthlyDeposit: values.monthlyDeposit,
+                    yearsOfInvestment: values.yearsOfInvestment,
+                    annualInterestRate: values.annualInterestRate,
+                    annualManagementFees: values.annualManagementFees,
+                    monthlyManagementFees: values.monthlyManagementFees,
                   });
                 console.log(values);
                 message.success('ההשקעה נוספה בהצלחה');

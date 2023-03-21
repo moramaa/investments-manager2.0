@@ -15,16 +15,23 @@ export const noteRouter = createTRPCRouter({
 
   create: protectedProcedure
     .input(
-      z.object({ title: z.string(), content: z.string(), topicId: z.string(), initialInvestment: z.number() })
+      z.object({ title: z.string(), content: z.string(), topicId: z.string(), initialInvestment: z.number(), monthlyDeposit: z.number(), yearsOfInvestment: z.number(), annualInterestRate: z.number(), annualManagementFees: z.number(), monthlyManagementFees: z.number() })
     )
     .mutation(async ({ ctx, input }) => {
       return ctx.prisma.note.create({
         data: {
           title: input.title,
-          topicId: input.topicId,
           content: input.content,
+
+          topicId: input.topicId,
+          id: input.topicId,
           initialInvestment: input.initialInvestment,
-          id:input.topicId,
+          monthlyDeposit: input.monthlyDeposit,
+          yearsOfInvestment: input.yearsOfInvestment,
+          annualInterestRate: input.annualInterestRate,
+          annualManagementFees: input.annualManagementFees,
+          monthlyManagementFees: input.monthlyManagementFees,
+
         },
       });
     }),

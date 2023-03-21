@@ -1,17 +1,13 @@
 import { useState } from "react";
 
-import CodeMirror from "@uiw/react-codemirror";
-import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
-import { languages } from "@codemirror/language-data";
-
 export const NoteEditor = ({
   onSave,
 }: {
-  onSave: (note: { title: string; content: string; initialInvestment: number }) => void;
+  onSave: (note: { title: string; content: string;  }) => void;
 }) => {
   const [code, setCode] = useState<string>("");
   const [title, setTitle] = useState<string>("");
-  const [initialInvestment, setInitialInvestment] = useState<number>(0);
+  // const [initialInvestment, setInitialInvestment] = useState<number>(0);
 
   return (
     <div className="card mt-5 border border-gray-200 bg-base-100 shadow-xl">
@@ -24,26 +20,15 @@ export const NoteEditor = ({
             value={title}
             onChange={(e) => setTitle(e.currentTarget.value)}
           />
-          <input
+          {/* <input
             type="number"
             placeholder="initial Investment"
             className="input-primary input input-lg w-full font-bold"
             value={initialInvestment}
             onChange={(e) => setInitialInvestment(e.currentTarget.valueAsNumber )}
-          />
+          /> */}
         </h2>
-        <CodeMirror
-          value={code}
-          width="500px"
-          height="30vh"
-          minWidth="100%"
-          minHeight="30vh"
-          extensions={[
-            markdown({ base: markdownLanguage, codeLanguages: languages }),
-          ]}
-          onChange={(value) => setCode(value)}
-          className="border border-gray-300"
-        />
+    
       </div>
       <div className="card-actions justify-end">
         <button
@@ -51,11 +36,11 @@ export const NoteEditor = ({
             onSave({
               title,
               content: code,
-              initialInvestment,
+              // initialInvestment,
             });
             setCode("");
             setTitle("");
-            setInitialInvestment(0);
+            // setInitialInvestment(0);
           }}
           className="btn-primary btn"
           disabled={title.trim().length === 0 || code.trim().length === 0}
